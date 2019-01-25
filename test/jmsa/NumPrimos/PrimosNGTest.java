@@ -52,29 +52,29 @@ public class PrimosNGTest
         {{0,0,0},{2,1,2}, {3,2,3},{100,25,97}};
     } */
     /**
-     * Test of criba method, of class Primos.
+     * Test of criba method, of class GeneraPrimos.
      */
     @Test
     public void testCriba()
     {
      System.out.println("criba");
-     int[] nullArray = Primos.criba(0);  
+     int[] nullArray = GeneraPrimos.criba(0);  
      assertEquals(nullArray.length, 0); 
-     int[] minArray = Primos.criba(2); 
+     int[] minArray = GeneraPrimos.criba(2); 
      assertEquals(minArray.length, 1); 
      assertEquals(minArray[0], 2);
-     int[] threeArray = Primos.criba(3); 
+     int[] threeArray = GeneraPrimos.criba(3); 
      assertEquals(threeArray.length, 2); 
      assertEquals(threeArray[0], 2); 
      assertEquals(threeArray[1], 3);   
-     int[] centArray = Primos.criba(100); 
+     int[] centArray = GeneraPrimos.criba(100); 
      assertEquals(centArray.length, 25); 
      assertEquals(centArray[24], 97); 
         
       
       /*  int max = 0;
         int[] expResult = null;
-        int[] result = Primos.criba(max);
+        int[] result = GeneraPrimos.criba(max);
         
         
         assertEquals(result, expResult);
