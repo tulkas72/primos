@@ -30,6 +30,17 @@ Además, buscamos un nombre más adecuado para la clase y eliminamos todos los
 comentarios innecesarios.
 */
 
+/*
+Un segundo intento.
+
+ El código ha mejorado pero aún es algo más enrevesado de la cuenta: 
+eliminamos la variable dim (nos vale esPrimo.length ), elegimos
+identificadores más adecuados para los métodos y reorganizamos el
+interior del método inicializar Candidatos (el antiguo inicializarCandidatos )
+*/
+
+
+
 public class GeneraPrimos
 {
 
@@ -44,26 +55,25 @@ public class GeneraPrimos
             return new int[0];  // Vector vacío
         } else
         {
-            inicializarCriba(max);
-            cribar();
-            rellenarPrimos();
+            inicializarCandidatos(max);
+            eliminarMultiplos();
+            obtenerCandidatosNoEliminados();
             return primos;
         }
     }
 
-    private static void inicializarCriba(int max)
+    private static void inicializarCandidatos(int max)
     {
         int i;
-        dim = max + 1;
-        esPrimo = new boolean[dim];
-        for (i = 0; i < dim; i++)
+        esPrimo = new boolean[max + 1];
+        esPrimo[0] = esPrimo[1] = false;
+        for (i = 2; i < esPrimo.length; i++)
         {
             esPrimo[i] = true;
         }
-        esPrimo[0] = esPrimo[1] = false;
     }
 
-    private static void cribar()
+    private static void eliminarMultiplos()
     {
         int i, j;
         for (i = 2; i < Math.sqrt(dim) + 1; i++)
@@ -79,7 +89,7 @@ public class GeneraPrimos
         }
     }
 
-    private static void rellenarPrimos()
+    private static void obtenerCandidatosNoEliminados()
     {
         int i, j, cuenta;
 // Contar primos
@@ -102,5 +112,3 @@ public class GeneraPrimos
         }
     }
 }
-
-
