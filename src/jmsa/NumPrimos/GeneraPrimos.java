@@ -39,6 +39,14 @@ identificadores más adecuados para los métodos y reorganizamos el
 interior del método inicializar Candidatos (el antiguo inicializarCandidatos )
 */
 
+/*
+El bucle anidado de eliminarMultiplos podía eliminarse si usamos
+un método auxiliar para eliminar los múltiplos de un número concreto.
+Por otro lado, la raíz cuadrada que aparece en eliminarMultiplos
+no queda muy claro de dónde proviene (en realidad, es el valor
+máximo que puede tener el menor factor de un número no primo
+menor o igual que N). Además, el +1 resulta innecesario.
+*/
 
 
 public class GeneraPrimos
@@ -75,17 +83,28 @@ public class GeneraPrimos
 
     private static void eliminarMultiplos()
     {
-        int i, j;
-        for (i = 2; i < Math.sqrt(dim) + 1; i++)
+        int i;
+        for (i = 2; i < maxFactor(); i++)
         {
             if (esPrimo[i])
             {
-                // Eliminar los múltiplos de i
-                for (j = 2 * i; j < dim; j += i)
-                {
-                    esPrimo[j] = false;
-                }
+                eliminarMultiplosDe(i);
             }
+        }
+
+    }
+    
+    private static int maxFactor()
+    {
+        return (int) Math.sqrt(esPrimo.length) + 1;
+    }
+
+    private static void eliminarMultiplosDe(int i)
+    {
+        int multiplo;
+        for (multiplo = 2 * i; multiplo < esPrimo.length; multiplo += i)
+        {
+            esPrimo[multiplo] = false;
         }
     }
 
